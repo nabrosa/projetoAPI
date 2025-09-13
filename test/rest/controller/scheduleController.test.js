@@ -40,7 +40,7 @@ describe('Schedule Controller', () => {
             const scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');
             scheduleServiceMock.throws(new Error('Day and time are required.'));
             
-            const respostaAgendamento = await request("http://localhost:3002")
+            const respostaAgendamento = await request(app)
                 .post('/schedules/register')
                 .set('Authorization', `Bearer ${token}`)
                 .send({
