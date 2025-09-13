@@ -1,0 +1,176 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2025-09-13T12:14:09.447Z",
+    "end": "2025-09-13T12:14:09.523Z",
+    "duration": 76,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "206848d3-809b-49ee-9373-9d734c6bcb6e",
+      "title": "",
+      "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
+      "file": "\\test\\rest\\controller\\scheduleController.test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a62fea59-aa69-434d-a43f-a48c3e191881",
+          "title": "Schedule Controller",
+          "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
+          "file": "\\test\\rest\\controller\\scheduleController.test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "512c7bf0-e355-491e-a519-f731530edc87",
+              "title": "POST /schedule",
+              "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
+              "file": "\\test\\rest\\controller\\scheduleController.test.js",
+              "beforeHooks": [
+                {
+                  "title": "\"before each\" hook in \"POST /schedule\"",
+                  "fullTitle": "Schedule Controller POST /schedule \"before each\" hook in \"POST /schedule\"",
+                  "timedOut": false,
+                  "duration": 6,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const postLogin = require('../fixture/requisicoes/login/postLogin.json');\nconst respostaLogin = await request(app)\n    .post('/users/login')\n    .send(postLogin);\ntoken = respostaLogin.body.token;",
+                  "err": {},
+                  "uuid": "18b9a543-dd6a-427e-aae9-b2d330165e5d",
+                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "afterHooks": [
+                {
+                  "title": "\"after each\" hook in \"POST /schedule\"",
+                  "fullTitle": "Schedule Controller POST /schedule \"after each\" hook in \"POST /schedule\"",
+                  "timedOut": false,
+                  "duration": 0,
+                  "state": null,
+                  "speed": null,
+                  "pass": false,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "sinon.restore();",
+                  "err": {},
+                  "uuid": "471604f9-5fac-4409-b95e-17e3509eb153",
+                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "isHook": true,
+                  "skipped": false
+                }
+              ],
+              "tests": [
+                {
+                  "title": "Mock: Quando não informo dia e horário recebo 400",
+                  "fullTitle": "Schedule Controller POST /schedule Mock: Quando não informo dia e horário recebo 400",
+                  "timedOut": false,
+                  "duration": 9,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const scheduleService = require('../../../service/scheduleService');\nconst scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');\nscheduleServiceMock.throws(new Error('Day and time are required.'));\n           \nconst respostaAgendamento = await request(app)\n    .post('/schedules/register')\n    .set('Authorization', `Bearer ${token}`)\n    .send({\n        day: \"\",\n        time: \"\"\n    });\nexpect(respostaAgendamento.status).to.equal(400);\nexpect(respostaAgendamento.body.message).to.equal('Day and time are required.');",
+                  "err": {},
+                  "uuid": "9e64bd05-b70c-4962-a491-693f00874d18",
+                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "Mock: Quando informo dia e horário já agendados recebo 409",
+                  "fullTitle": "Schedule Controller POST /schedule Mock: Quando informo dia e horário já agendados recebo 409",
+                  "timedOut": false,
+                  "duration": 18,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const scheduleService = require('../../../service/scheduleService');\nconst scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');\nscheduleServiceMock.throws(new Error('Day and time are required.'));\n\nconst respostaAgendamento = await request(\"http://localhost:3002\")\n    .post('/schedules/register')\n    .set('Authorization', `Bearer ${token}`)\n    .send({\n        day: \"30/09/2025\",\n        time: \"12:00\"\n    });\n        \nexpect(respostaAgendamento.status).to.equal(409);\nexpect(respostaAgendamento.body.message).to.equal('Schedule already exists for this user at this time.');",
+                  "err": {},
+                  "uuid": "d670b011-71f8-4948-bc66-47b9590e5079",
+                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "9e64bd05-b70c-4962-a491-693f00874d18",
+                "d670b011-71f8-4948-bc66-47b9590e5079"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 27,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 10000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 10000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 10000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "11.7.2"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}

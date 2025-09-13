@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v4
+
+    - name: Instalar Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Executar os testes de API via Controller
+      run: npm run test-rest-controller
+
+    - name: Subir a API Rest 
+      run: npm run start-rest &
+
+    - name: Esperar as APIs estarem Funcionando
+      run: sleep 8
+
+    - name: Rodar os testes External de API Rest via HTTP
+      run: npm run test-rest-external

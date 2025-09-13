@@ -1,0 +1,23 @@
+{
+  "name": "projetoAPI",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js --timeout 10000 --reporter mochawesome",
+    "test-rest-external": "mocha test/rest/external/**/*.test.js --timeout 10000 --reporter mochawesome",
+    "test-rest-controller": "mocha test/rest/controller/**/*.test.js --timeout 10000 --reporter mochawesome",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "chai": "^6.0.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mocha": "^11.7.2",
+    "sinon": "^21.0.0",
+    "supertest": "^7.1.4",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}
