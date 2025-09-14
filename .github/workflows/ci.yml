@@ -26,10 +26,16 @@ jobs:
       run: npm run test-rest-controller
 
     - name: Subir a API Rest 
-      run: npm start &
+      run: npm run start-rest &
+
+    - name: Subir a API GraphQL 
+      run: npm run start-graphql &
 
     - name: Esperar as APIs estarem Funcionando
       run: sleep 8
 
     - name: Rodar os testes External de API Rest via HTTP
       run: npm run test-rest-external
+
+    - name: Rodar os testes External de API GraphQL via HTTP
+      run: npm run test-graphql-external
