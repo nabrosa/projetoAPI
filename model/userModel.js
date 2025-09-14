@@ -4,4 +4,3 @@ exports.users = [
     password: '123456'
   } 
 ];
-

@@ -2,14 +2,14 @@
   "stats": {
     "suites": 2,
     "tests": 2,
-    "passes": 2,
+    "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-09-13T12:14:09.447Z",
-    "end": "2025-09-13T12:14:09.523Z",
-    "duration": 76,
+    "failures": 1,
+    "start": "2025-09-13T14:28:16.131Z",
+    "end": "2025-09-13T14:28:16.197Z",
+    "duration": 66,
     "testsRegistered": 2,
-    "passPercent": 100,
+    "passPercent": 50,
     "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "206848d3-809b-49ee-9373-9d734c6bcb6e",
+      "uuid": "0569dcd9-fe08-4278-9889-22ee71e2ca5a",
       "title": "",
       "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
       "file": "\\test\\rest\\controller\\scheduleController.test.js",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "a62fea59-aa69-434d-a43f-a48c3e191881",
+          "uuid": "f4afc208-908a-443d-9a05-b13b6e0befd9",
           "title": "Schedule Controller",
           "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
           "file": "\\test\\rest\\controller\\scheduleController.test.js",
@@ -36,7 +36,7 @@
           "tests": [],
           "suites": [
             {
-              "uuid": "512c7bf0-e355-491e-a519-f731530edc87",
+              "uuid": "10dcf056-abef-46b4-a513-a2926e7507a1",
               "title": "POST /schedule",
               "fullFile": "C:\\Users\\nabea\\pos_pgats\\projetoAPI\\test\\rest\\controller\\scheduleController.test.js",
               "file": "\\test\\rest\\controller\\scheduleController.test.js",
@@ -45,7 +45,7 @@
                   "title": "\"before each\" hook in \"POST /schedule\"",
                   "fullTitle": "Schedule Controller POST /schedule \"before each\" hook in \"POST /schedule\"",
                   "timedOut": false,
-                  "duration": 6,
+                  "duration": 4,
                   "state": null,
                   "speed": null,
                   "pass": false,
@@ -54,8 +54,8 @@
                   "context": null,
                   "code": "const postLogin = require('../fixture/requisicoes/login/postLogin.json');\nconst respostaLogin = await request(app)\n    .post('/users/login')\n    .send(postLogin);\ntoken = respostaLogin.body.token;",
                   "err": {},
-                  "uuid": "18b9a543-dd6a-427e-aae9-b2d330165e5d",
-                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "uuid": "fbb0daf6-431a-4dae-affd-a27212e70b8c",
+                  "parentUUID": "10dcf056-abef-46b4-a513-a2926e7507a1",
                   "isHook": true,
                   "skipped": false
                 }
@@ -74,8 +74,8 @@
                   "context": null,
                   "code": "sinon.restore();",
                   "err": {},
-                  "uuid": "471604f9-5fac-4409-b95e-17e3509eb153",
-                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "uuid": "c8de6661-93a8-4231-bedb-f5a592f8ee12",
+                  "parentUUID": "10dcf056-abef-46b4-a513-a2926e7507a1",
                   "isHook": true,
                   "skipped": false
                 }
@@ -85,7 +85,7 @@
                   "title": "Mock: Quando não informo dia e horário recebo 400",
                   "fullTitle": "Schedule Controller POST /schedule Mock: Quando não informo dia e horário recebo 400",
                   "timedOut": false,
-                  "duration": 9,
+                  "duration": 10,
                   "state": "passed",
                   "speed": "fast",
                   "pass": true,
@@ -94,8 +94,8 @@
                   "context": null,
                   "code": "const scheduleService = require('../../../service/scheduleService');\nconst scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');\nscheduleServiceMock.throws(new Error('Day and time are required.'));\n           \nconst respostaAgendamento = await request(app)\n    .post('/schedules/register')\n    .set('Authorization', `Bearer ${token}`)\n    .send({\n        day: \"\",\n        time: \"\"\n    });\nexpect(respostaAgendamento.status).to.equal(400);\nexpect(respostaAgendamento.body.message).to.equal('Day and time are required.');",
                   "err": {},
-                  "uuid": "9e64bd05-b70c-4962-a491-693f00874d18",
-                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "uuid": "f43f4759-4cfc-41c1-b944-d00c0f28943e",
+                  "parentUUID": "10dcf056-abef-46b4-a513-a2926e7507a1",
                   "isHook": false,
                   "skipped": false
                 },
@@ -103,30 +103,35 @@
                   "title": "Mock: Quando informo dia e horário já agendados recebo 409",
                   "fullTitle": "Schedule Controller POST /schedule Mock: Quando informo dia e horário já agendados recebo 409",
                   "timedOut": false,
-                  "duration": 18,
-                  "state": "passed",
-                  "speed": "fast",
-                  "pass": true,
-                  "fail": false,
+                  "duration": 5,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
                   "pending": false,
                   "context": null,
-                  "code": "const scheduleService = require('../../../service/scheduleService');\nconst scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');\nscheduleServiceMock.throws(new Error('Day and time are required.'));\n\nconst respostaAgendamento = await request(\"http://localhost:3002\")\n    .post('/schedules/register')\n    .set('Authorization', `Bearer ${token}`)\n    .send({\n        day: \"30/09/2025\",\n        time: \"12:00\"\n    });\n        \nexpect(respostaAgendamento.status).to.equal(409);\nexpect(respostaAgendamento.body.message).to.equal('Schedule already exists for this user at this time.');",
-                  "err": {},
-                  "uuid": "d670b011-71f8-4948-bc66-47b9590e5079",
-                  "parentUUID": "512c7bf0-e355-491e-a519-f731530edc87",
+                  "code": "const scheduleService = require('../../../service/scheduleService');\nconst scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');\nscheduleServiceMock.throws(new Error('Day and time are required.'));\n\nconst respostaAgendamento = await request(app)\n    .post('/schedules/register')\n    .set('Authorization', `Bearer ${token}`)\n    .send({\n        day: \"30/09/2025\",\n        time: \"12:00\"\n    });\n    \nexpect(respostaAgendamento.status).to.equal(409);\nexpect(respostaAgendamento.body.message).to.equal('Schedule already exists for this user at this time.');",
+                  "err": {
+                    "message": "AssertionError: expected 201 to equal 409",
+                    "estack": "AssertionError: expected 201 to equal 409\n    at Context.<anonymous> (test\\rest\\controller\\scheduleController.test.js:51:51)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                    "diff": "- 201\n+ 409\n"
+                  },
+                  "uuid": "538ff88f-c82e-4f81-860d-2a75c114f8c5",
+                  "parentUUID": "10dcf056-abef-46b4-a513-a2926e7507a1",
                   "isHook": false,
                   "skipped": false
                 }
               ],
               "suites": [],
               "passes": [
-                "9e64bd05-b70c-4962-a491-693f00874d18",
-                "d670b011-71f8-4948-bc66-47b9590e5079"
+                "f43f4759-4cfc-41c1-b944-d00c0f28943e"
               ],
-              "failures": [],
+              "failures": [
+                "538ff88f-c82e-4f81-860d-2a75c114f8c5"
+              ],
               "pending": [],
               "skipped": [],
-              "duration": 27,
+              "duration": 15,
               "root": false,
               "rootEmpty": false,
               "_timeout": 10000
