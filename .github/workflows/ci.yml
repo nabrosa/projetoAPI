@@ -32,7 +32,7 @@ jobs:
       run: npm run start-graphql &
 
     - name: Esperar as APIs estarem Funcionando
-      run: sleep 8
+      run: sleep 10
 
     - name: Rodar os testes External de API Rest via HTTP
       run: npm run test-rest-external
