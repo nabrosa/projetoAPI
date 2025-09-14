@@ -1,0 +1,37 @@
+[
+    {
+        "nomeDoTeste": "Não informar Data e Horário",
+        "registerSchedule": {
+            "query": "mutation RegisterSchedule($day: String!, $time: String!) { registerSchedule(day: $day, time: $time)}",
+            "variables": {
+                "day": "",
+                "time": ""
+            }
+        },
+        "mensagemEsperada": "Day and time are required."
+    },
+
+    {
+        "nomeDoTeste": "Não informar Data",
+        "registerSchedule": {
+            "query": "mutation RegisterSchedule($day: String!, $time: String!) { registerSchedule(day: $day, time: $time)}",
+            "variables": {
+                "day": "",
+                "time": "10:00"
+            }
+        },
+        "mensagemEsperada": "Day and time are required."
+    },
+
+    {
+        "nomeDoTeste": "Não informar horário",
+        "registerSchedule": {
+            "query": "mutation RegisterSchedule($day: String!, $time: String!) { registerSchedule(day: $day, time: $time)}",
+            "variables": {
+                "day": "10/11/2025",
+                "time": ""
+            }
+        },
+        "mensagemEsperada": "Day and time are required."
+    }
+]
