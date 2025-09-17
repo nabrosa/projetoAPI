@@ -19,6 +19,7 @@ describe('Schedule Controller', () => {
 
 
         it('Mock: Quando não informo dia e horário recebo 400', async () => {
+            const scheduleMandatory = require('../fixture/requisicoes/schedule/registerScheduleMandatory.json');
             const scheduleService = require('../../../service/scheduleService');
             const scheduleServiceMock = sinon.stub(scheduleService, 'registerSchedule');
             scheduleServiceMock.throws(new Error('Day and time are required.'));
@@ -26,10 +27,8 @@ describe('Schedule Controller', () => {
             const respostaAgendamento = await request(app)
                 .post('/schedules/register')
                 .set('Authorization', `Bearer ${token}`)
-                .send({
-                    day: "",
-                    time: ""
-                });
+                .send(scheduleMandatory);
+                
             expect(respostaAgendamento.status).to.equal(400);
             expect(respostaAgendamento.body.message).to.equal('Day and time are required.');
         });
