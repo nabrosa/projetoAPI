@@ -34,7 +34,7 @@ jobs:
     - name: Esperar as APIs estarem Funcionando
       run: sleep 10
 
-    - name: Criar arquivo .env
+    - name: Criar .env
       run: |
         echo "BASE_URL_REST=${{ secrets.BASE_URL_REST }}" >> .env
         echo "BASE_URL_GRAPHQL=${{ secrets.BASE_URL_GRAPHQL }}" >> .env
