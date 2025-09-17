@@ -1,20 +1,21 @@
 const request = require('supertest');   
 const { expect } = require('chai');
+require('dotenv').config();
 
 describe('Schedule Controller', () => {
     describe('POST /schedule', () => {
 
         beforeEach(async () => {
             const loginUser = require('../fixture/requisicoes/login/loginUser.json');
-            const respostaLogin = await request('http://localhost:4000/graphql')
+            const respostaLogin = await request(process.env.BASE_URL_GRAPHQL)
                 .post('')
                 .send(loginUser);
             token = respostaLogin.body.data.login.token;
         });
 
-        it('Quando informo dia e horário recebo 201', async () => {
+        it('Quando informo dia e horário tenho sucesso', async () => {
             const registerSchedule = require('../fixture/requisicoes/schedule/registerSchedule.json')
-            const respostaAgendamento = await request("http://localhost:4000/graphql")
+            const respostaAgendamento = await request(process.env.BASE_URL_GRAPHQL)
                 .post('')
                 .set('Authorization', `Bearer ${token}`)
                 .send(registerSchedule);
@@ -26,7 +27,7 @@ describe('Schedule Controller', () => {
         const registerScheduleMandatory = require('../fixture/requisicoes/schedule/registerScheduleMandatory.json')
         registerScheduleMandatory.forEach(teste => {
             it(`Validar a obrigatoriedade dos campos quando: ${teste.nomeDoTeste}`, async () => {
-                const respostaAgendamento = await request("http://localhost:4000/graphql")
+                const respostaAgendamento = await request(process.env.BASE_URL_GRAPHQL)
                 .post('')
                 .set('Authorization', `Bearer ${token}`)
                 .send(teste.registerSchedule);

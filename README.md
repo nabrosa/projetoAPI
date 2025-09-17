@@ -15,6 +15,8 @@ Esta API permite o registro e login de usuários, consulta de usuários cadastra
    ```
 npm install express jsonwebtoken swagger-ui-express
    ```
+## Configuração
+Crie um arquivo .env na raiz do projeto com as propriedades BASE_URL_REST e BASE_URL_GRAPHQL, contendo a URL desses serviços.
 
 ## Como rodar a API
 
