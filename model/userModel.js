@@ -1,6 +1,14 @@
 exports.users = [
   {
-    username: 'natalia', 
+    username: 'natalia',
     password: '123456'
-  } 
+  },
+  {
+    username: 'Maria',
+    password: '456789'
+  },
+  {
+    username: 'Joao',
+    password: '987654'
+  }
 ];
